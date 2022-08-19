@@ -102,3 +102,102 @@ def before_request():
         g.user = user
 
 ```
+
+# Práctica 10: Codificación legible
+
+## Comenting and documentation
+```
+
+```
+## Avoid obvius comemnts
+Se podría comentar que hace cada función, pero esto resultaría en un redundancias innecesarias
+```
+    def getLink(evento):
+        return evento.link
+    def setLink(evento, link_):
+        if not "www" in link_:
+            raise("Expected a www in ", link_)
+        evento.link = link_
+
+    def getId(evento):
+        return evento.id
+    def getId(evento, id_):
+        evento.id = id_
+```
+
+## Code grouping
+Cada grupo de funciones set y get estan separadas 
+```
+# modulo evento
+class Evento:
+    def __init__(evento, detalles_, link_, 
+                id_, nombre_, fecha_, 
+                hora_inicio_, hora_fin_):
+        evento.detalles = detalles_
+        evento.link = link_
+        evento.id = id_
+        evento.nombre = nombre_
+        evento.fecha = fecha_
+        evento.hora_inicio = hora_inicio_
+        evento.hora_fin = hora_fin_
+    
+    def getDetalles(evento):
+        return evento.detalles
+    def setDetalles(evento, detalles_):
+        evento.detalles = detalles_
+
+    def getLink(evento):
+        return evento.link
+    def setLink(evento, link_):
+        if not "www" in link_:
+            raise("Expected a www in ", link_)
+        evento.link = link_
+
+    def getId(evento):
+        return evento.id
+    def getId(evento, id_):
+        evento.id = id_
+
+    def getNombre(evento):
+        return evento.nombre
+    def getNombre(evento, nombre_):
+        evento.nombre = nombre_
+
+    def getFecha(evento):
+        return evento.fecha
+    def getFecha(evento, fecha_):
+        evento.fecha = fecha_
+
+    def getHoraInicio(evento):
+        return evento.hora_inicio
+    def getHoraInicio(evento, hora_inicio_):
+        evento.hora_inicio = hora_inicio_
+
+    def getHoraFin(evento):
+        return evento.hora_fin
+    def getHoraFin(evento, hora_fin_):
+        evento.hora_fin = hora_fin_
+
+```
+## Consistent naming scheme
+Para cada función se utiliza mayúsculas a partir de la segunda palabra, además por cada parámetro que pide la función se usa un sub-guión al final (menos evento que es el identificador de la clase)
+```
+    def getFecha(evento):
+        return evento.fecha
+    def getFecha(evento, fecha_):
+        evento.fecha = fecha_
+```
+## Capitalize SQL special words
+Se usa mayúsculas en las palabras reservadas al hacer uso de sentencias SQL, con la finalidad de mejorar el entendimiento del código
+```
+ def getUsuario(self, id): #retorna el usuario dependiendo del ID que se pasa a traves de json    
+        params = {'id' : id}      
+        rv = self.mysql_pool.execute("SELECT * FROM login WHERE id=%(id)s", params)                
+        data = []
+        content = {}
+        for result in rv:
+            content = {'id': result[0], 'contrasenia': result[1]}
+            data.append(content)
+            content = {}
+        return data
+```
