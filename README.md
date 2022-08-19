@@ -72,7 +72,7 @@ def setLink(evento, link_):
 ```
 
 ## Cook book
-[Implementación](Final_Project_Software_Engineer/Modelo Candidato/app.py)
+[Implementación](Modelo Candidato/app.py)
 
 Constraints:
 - Larger problem decomposed in procedural abstractions
