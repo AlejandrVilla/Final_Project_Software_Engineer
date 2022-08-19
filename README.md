@@ -61,8 +61,8 @@ class Evento:
 Constraints:
 - Existence of a run-time typechecker
 - Procedures and functions declare what types of arguments they expect
+- If callers send arguments of types that are't expected, the procedures/functions are not executed
 
-If callers send arguments of types that are't expected, the procedures/functions are not executed
 Cuando un nuevo link se va añadir a la entidad evento, esta debe contener la "www" dentro de la cadena, sinó esta no sería válida
 El archivo es 
 ```
@@ -72,7 +72,7 @@ def setLink(evento, link_):
 ```
 
 ## Cook book
-[Implementación](/Modelo Candidato/app.py)
+[Implementación](Modelo Candidato/app.py)
 
 Constraints:
 - Larger problem decomposed in procedural abstractions
