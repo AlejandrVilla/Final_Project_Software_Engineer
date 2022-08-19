@@ -54,6 +54,11 @@ class Evento:
 ```
 
 ## Declared intentions
+Constraints:
+- Existence of a run-time typechecker
+- Procedures and functions declare what types of arguments they expect
+
+If callers send arguments of types that are't expected, the procedures/functions are not executed
 Cuando un nuevo link se va añadir a la entidad evento, esta debe contener la "www" dentro de la cadena, sinó esta no sería válida
 El archivo es 
 ```
@@ -63,6 +68,10 @@ def setLink(evento, link_):
 ```
 
 ## Cook book
+Constraints:
+- Larger problem decomposed in procedural abstractions
+- Larger problem solved as a sequence of commands, each corresponding to a procedure
+
 Users es una variable global que se usa dentro de varias funciones 
 ```
 users = []
