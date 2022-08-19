@@ -56,7 +56,7 @@ def setLink(evento, link_):
 ```
 
 ## Cook book
-users es una variable global que se usa dentro de varias funciones 
+Users es una variable global que se usa dentro de varias funciones 
 ```
 users = []
 
