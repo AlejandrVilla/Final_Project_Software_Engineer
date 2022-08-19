@@ -215,7 +215,7 @@ class Evento:
 
 ```
 ## Consistent naming scheme
-Para cada función se utiliza mayúsculas a partir de la segunda palabra, además por cada parámetro que pide la función se usa un sub-guión al final (menos evento que es el identificador de la clase).
+Para cada función se utiliza sub-guión para separar palabras, además por cada parámetro que pide la función se usa un sub-guión al final (menos evento que es el identificador de la clase).
 ```
     def get_fecha(evento):
         return evento.fecha
