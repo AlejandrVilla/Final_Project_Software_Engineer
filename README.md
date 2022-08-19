@@ -2,12 +2,12 @@
 
 ## Things
 Constraints:
-- The larger problem is decomposed into 'things' that make sense for the problem domain
-- Each 'thing' is a capsule of data that exposes procedures to the rest of the world
-- Data is never accessed directly, only through these procedures
-- Capsules can reappropriate procedures defined in other capsules
+- The larger problem is decomposed into 'things' that make sense for the problem domain.
+- Each 'thing' is a capsule of data that exposes procedures to the rest of the world.
+- Data is never accessed directly, only through these procedures.
+- Capsules can reappropriate procedures defined in other capsules.
 
-La declaracion de la clase evento que se usará como una entidad en la lógica del dominio
+La declaracion de la clase evento que se usará como una entidad en la lógica del dominio.
 ```
 # modulo evento
 class Evento:
@@ -63,11 +63,11 @@ class Evento:
 
 ## Declared intentions
 Constraints:
-- Existence of a run-time typechecker
-- Procedures and functions declare what types of arguments they expect
-- If callers send arguments of types that are't expected, the procedures/functions are not executed
+- Existence of a run-time typechecker.
+- Procedures and functions declare what types of arguments they expect.
+- If callers send arguments of types that are't expected, the procedures/functions are not executed.
 
-Cuando un nuevo link se va añadir a la entidad evento, esta debe contener la "www" dentro de la cadena, sinó esta no sería válida
+Cuando un nuevo link se va añadir a la entidad evento, esta debe contener la "www" dentro de la cadena, sinó esta no sería válida.
 ```
 def set_link(evento, link_):
         if not "www" in link_:
@@ -77,10 +77,10 @@ def set_link(evento, link_):
 
 ## Cook book
 Constraints:
-- Larger problem decomposed in procedural abstractions
-- Larger problem solved as a sequence of commands, each corresponding to a procedure
+- Larger problem decomposed in procedural abstractions.
+- Larger problem solved as a sequence of commands, each corresponding to a procedure.
 
-Users es una variable global que se usa dentro de varias funciones 
+Users es una variable global que se usa dentro de varias funciones .
 ```
 users = []
 
@@ -113,7 +113,7 @@ def before_request():
 # Práctica 10: Codificación legible
 
 ## Limit line length
-Comenta la logica necesaria mas no cada acción realizada dentro de cada función
+Largas líneas de código pueden resultar tediosas de leer, mejor es acomodarlas en columnas.
 ```
     def get_all_usuario(self): #retorna todos los usuarios que existen en la tabla "login"
         rv = self.mysql_pool.execute("SELECT * FROM login ORDER BY id")  
@@ -144,7 +144,7 @@ Comenta la logica necesaria mas no cada acción realizada dentro de cada funció
         return data
 ```
 ## Avoid obvius comemnts
-Se podría comentar que hace cada función, pero esto resultaría en redundancias innecesarias
+Se podría comentar que hace cada función, pero esto resultaría en redundancias innecesarias.
 ```
     def get_link(evento):
         return evento.link
@@ -160,7 +160,7 @@ Se podría comentar que hace cada función, pero esto resultaría en redundancia
 ```
 
 ## Code grouping
-Cada grupo de funciones set y get estan separadas 
+Cada grupo de funciones set y get estan separadas.
 ```
 # modulo evento
 class Evento:
@@ -215,7 +215,7 @@ class Evento:
 
 ```
 ## Consistent naming scheme
-Para cada función se utiliza mayúsculas a partir de la segunda palabra, además por cada parámetro que pide la función se usa un sub-guión al final (menos evento que es el identificador de la clase)
+Para cada función se utiliza mayúsculas a partir de la segunda palabra, además por cada parámetro que pide la función se usa un sub-guión al final (menos evento que es el identificador de la clase).
 ```
     def get_fecha(evento):
         return evento.fecha
@@ -223,7 +223,7 @@ Para cada función se utiliza mayúsculas a partir de la segunda palabra, ademá
         evento.fecha = fecha_
 ```
 ## Capitalize SQL special words
-Se usa mayúsculas en las palabras reservadas al hacer uso de sentencias SQL, con la finalidad de mejorar el entendimiento del código
+Se usa mayúsculas en las palabras reservadas al hacer uso de sentencias SQL, con la finalidad de mejorar el entendimiento del código.
 ```
  def get_usuario(self, id_): #retorna el usuario dependiendo del ID que se pasa a traves de json    
         params = {'id' : id_}      
