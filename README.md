@@ -56,8 +56,8 @@ class Evento:
 ```
 
 ## Declared intentions
-
 [Implementación](Evento.py)
+
 Constraints:
 - Existence of a run-time typechecker
 - Procedures and functions declare what types of arguments they expect
@@ -72,8 +72,8 @@ def setLink(evento, link_):
 ```
 
 ## Cook book
-
 [Implementación](Final_Project_Software_Engineer/Modelo Candidato/app.py)
+
 Constraints:
 - Larger problem decomposed in procedural abstractions
 - Larger problem solved as a sequence of commands, each corresponding to a procedure
