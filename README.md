@@ -1,8 +1,6 @@
 # Practica 9: Estilos de programación
 
 ## Things
-[Implementación](Evento.py)
-
 Constraints:
 - The larger problem is decomposed into 'things' that make sense for the problem domain
 - Each 'thing' is a capsule of data that exposes procedures to the rest of the world
@@ -56,8 +54,6 @@ class Evento:
 ```
 
 ## Declared intentions
-[Implementación](Evento.py)
-
 Constraints:
 - Existence of a run-time typechecker
 - Procedures and functions declare what types of arguments they expect
@@ -71,8 +67,6 @@ def setLink(evento, link_):
 ```
 
 ## Cook book
-[Implementación](Modelo Candidato/app.py)
-
 Constraints:
 - Larger problem decomposed in procedural abstractions
 - Larger problem solved as a sequence of commands, each corresponding to a procedure
@@ -106,11 +100,30 @@ def before_request():
 # Práctica 10: Codificación legible
 
 ## Comenting and documentation
+Comenta la logica necesaria mas no cada acción realizada dentro de cada función
 ```
+    def createUsuario(self, id, contrasenia):   #crear usuario a traves de json    
+        params = {
+            'id' : id,
+            'contrasenia' : contrasenia
+        }  
+        query = """insert into login(id, contrasenia) 
+            values (%(id)s, %(contrasenia)s)"""    
+        cursor = self.mysql_pool.execute(query, params, commit=True)   
 
+        data = {'id': id, 'contrasenia': contrasenia}
+        return data
+
+    def deleteUsuario(self, id):    #borra usuario de la base de datos  
+        params = {'id' : id}      
+        query = """delete from login where id = %(id)s"""    
+        self.mysql_pool.execute(query, params, commit=True)   
+
+        data = {'result': 1}
+        return data
 ```
 ## Avoid obvius comemnts
-Se podría comentar que hace cada función, pero esto resultaría en un redundancias innecesarias
+Se podría comentar que hace cada función, pero esto resultaría en redundancias innecesarias
 ```
     def getLink(evento):
         return evento.link
