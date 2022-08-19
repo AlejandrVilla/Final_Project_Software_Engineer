@@ -49,6 +49,7 @@ class Evento:
 
 ## Declared intentions
 Cuando un nuevo link se va añadir a la entidad evento, esta debe contener la "www" dentro de la cadena, sinó esta no sería válida
+El archivo es 
 ```
 def setLink(evento, link_):
         if not "www" in link_:
