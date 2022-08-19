@@ -44,12 +44,14 @@ users = []
 
 list_log = modelLogin.get_all_usuario()
 list_user = modelUser.get_all_usuarios()
-list_course = modelCourse.get_all_curso_del_estudiante()
-
 
 n = 1
-for x, y, z in zip(list_log,list_user,list_course):
-    users.append(User(id=n, cui=x.get('cui'), contrasenia=x.get('contrasenia'),nombres=y.get('nombres'),apellidos=y.get('apellidos'),escuela=y.get('escuela'),correo=y.get('correo'),imagen=y.get('imagen'),cursos=[z.get('curso1'),z.get('curso2'),z.get('curso3'),z.get('curso4'),z.get('curso5')]))
+for x, y in zip(list_log,list_user):
+    users.append(User(
+        id=n, contrasenia=x.get('contrasenia'),corre=x.get('correo'),
+        nombre=x.get('nombre'), apellido=x.get('apellido'),
+        nombres=y.get('nombres'), apellidos=y.get('apellidos'),
+        correo=y.get('correo'), lista=y.get('listaEventos'),))
     n += 1
 
 
