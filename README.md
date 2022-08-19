@@ -102,3 +102,10 @@ def before_request():
         g.user = user
 
 ```
+
+# Práctica 10: Codificación legible
+## Comenting and documentation
+##
+##
+##
+##
