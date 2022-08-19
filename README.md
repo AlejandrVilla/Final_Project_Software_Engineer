@@ -1,6 +1,14 @@
 # Practica 9: Estilos de programación
 
 ## Things
+[Implementación](Evento.py)
+
+Constraints:
+- The larger problem is decomposed into 'things' that make sense for the problem domain
+- Each 'thing' is a capsule of data that exposes procedures to the rest of the world
+- Data is never accessed directly, only through these procedures
+- Capsules can reappropriate procedures defined in other capsules
+
 La declaracion de la clase evento que se usará como una entidad en la lógica del dominio
 ```
 class Evento:
@@ -48,6 +56,13 @@ class Evento:
 ```
 
 ## Declared intentions
+[Implementación](Evento.py)
+
+Constraints:
+- Existence of a run-time typechecker
+- Procedures and functions declare what types of arguments they expect
+- If callers send arguments of types that are't expected, the procedures/functions are not executed
+
 Cuando un nuevo link se va añadir a la entidad evento, esta debe contener la "www" dentro de la cadena, sinó esta no sería válida
 ```
 def setLink(evento, link_):
@@ -56,6 +71,12 @@ def setLink(evento, link_):
 ```
 
 ## Cook book
+[Implementación](Modelo Candidato/app.py)
+
+Constraints:
+- Larger problem decomposed in procedural abstractions
+- Larger problem solved as a sequence of commands, each corresponding to a procedure
+
 Users es una variable global que se usa dentro de varias funciones 
 ```
 users = []
