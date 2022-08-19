@@ -5,42 +5,51 @@ class LoginModel:
     def __init__(self): 
         self.mysql_pool = MySQLPool()
 
-    def getUsuario(self, id): #retorna el usuario dependiendo del ID que se pasa a traves de json    
-        params = {'id' : id}      
-        rv = self.mysql_pool.execute("SELECT * FROM login WHERE id=%(id)s", params)                
+    def get_usuario(self, id_): #retorna el usuario dependiendo del ID que se pasa a traves de json    
+        params = {'id' : id_}      
+        rv = self.mysql_pool.execute("SELECT * FROM login WHERE id=%(id_)s", params)                
         data = []
         content = {}
         for result in rv:
-            content = {'id': result[0], 'contrasenia': result[1]}
+            content = {
+                'id': result[0], 
+                'contrasenia': result[1]
+                }
             data.append(content)
             content = {}
         return data
 
-    def getAllUsuario(self): #retorna todos los usuarios que existen en la tabla "login"
-        rv = self.mysql_pool.execute("SELECT * FROM login ORDER BY cui")  
+    def get_all_usuario(self): #retorna todos los usuarios que existen en la tabla "login"
+        rv = self.mysql_pool.execute("SELECT * FROM login ORDER BY id")  
         data = []
         content = {}
         for result in rv:
-            content = {'cui': result[0], 'contrasenia': result[1]}
+            content = {
+                'id': result[0], 
+                'contrasenia': result[1]
+                }
             data.append(content)
             content = {}
         return data
 
-    def createUsuario(self, cui, contrasenia): #crear usuario a traves de json    
+    def create_usuario(self, id_, contrasenia_):       
         params = {
-            'cui' : cui,
-            'contrasenia' : contrasenia
-        }  
-        query = """insert into login(cui, contrasenia) 
-            values (%(cui)s, %(contrasenia)s)"""    
+            'id' : id_,
+            'contrasenia' : contrasenia_
+            }  
+        query = """INSERT INTO login(id, contrasenia) 
+                    VALUES (%(id_)s, %(contrasenia_)s)"""    
         cursor = self.mysql_pool.execute(query, params, commit=True)   
 
-        data = {'cui': cui, 'contrasenia': contrasenia}
+        data = {
+            'id': id_, 
+            'contrasenia': contrasenia_
+            }
         return data
 
-    def deleteUsuario(self, cui):#borra usuario de la base de datos  
-        params = {'cui' : cui}      
-        query = """delete from login where cui = %(cui)s"""    
+    def delete_usuario(self, id_):     
+        params = {'id' : id_}      
+        query = """DELETE FROM login WHERE id = %(id_)s"""    
         self.mysql_pool.execute(query, params, commit=True)   
 
         data = {'result': 1}

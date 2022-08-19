@@ -20,5 +20,6 @@ class AsistenteModel:
         
 
     def create_asistente(self, id, nombre, apellido, correo):
-
-    def delete_asistente(self, id)
+        pass
+    def delete_asistente(self, id):
+        pass
