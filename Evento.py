@@ -3,7 +3,9 @@
 
 # modulo evento
 class Evento:
-    def __init__(evento, detalles_, link_, id_, nombre_, fecha_, hora_inicio_, hora_fin_):
+    def __init__(evento, detalles_, link_, 
+                id_, nombre_, fecha_, 
+                hora_inicio_, hora_fin_):
         evento.detalles = detalles_
         evento.link = link_
         evento.id = id_

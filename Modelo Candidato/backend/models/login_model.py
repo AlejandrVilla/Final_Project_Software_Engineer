@@ -5,9 +5,19 @@ class LoginModel:
     def __init__(self): 
         self.mysql_pool = MySQLPool()
 
-    def get_usuario(self, cui): #retorna el usuario dependiendo del CUI que se pasa a traves de json    
-        params = {'cui' : cui}      
-        rv = self.mysql_pool.execute("SELECT * from login where cui=%(cui)s", params)                
+    def getUsuario(self, id): #retorna el usuario dependiendo del ID que se pasa a traves de json    
+        params = {'id' : id}      
+        rv = self.mysql_pool.execute("SELECT * FROM login WHERE id=%(id)s", params)                
+        data = []
+        content = {}
+        for result in rv:
+            content = {'id': result[0], 'contrasenia': result[1]}
+            data.append(content)
+            content = {}
+        return data
+
+    def getAllUsuario(self): #retorna todos los usuarios que existen en la tabla "login"
+        rv = self.mysql_pool.execute("SELECT * FROM login ORDER BY cui")  
         data = []
         content = {}
         for result in rv:
@@ -16,17 +26,7 @@ class LoginModel:
             content = {}
         return data
 
-    def get_all_usuario(self): #retorna todos los usuarios que existen en la tabla "login"
-        rv = self.mysql_pool.execute("SELECT * from login order by cui")  
-        data = []
-        content = {}
-        for result in rv:
-            content = {'cui': result[0], 'contrasenia': result[1]}
-            data.append(content)
-            content = {}
-        return data
-
-    def create_usuario(self, cui, contrasenia): #crear usuario a traves de json    
+    def createUsuario(self, cui, contrasenia): #crear usuario a traves de json    
         params = {
             'cui' : cui,
             'contrasenia' : contrasenia
@@ -38,7 +38,7 @@ class LoginModel:
         data = {'cui': cui, 'contrasenia': contrasenia}
         return data
 
-    def delete_usuario(self, cui):#borra usuario de la base de datos  
+    def deleteUsuario(self, cui):#borra usuario de la base de datos  
         params = {'cui' : cui}      
         query = """delete from login where cui = %(cui)s"""    
         self.mysql_pool.execute(query, params, commit=True)   

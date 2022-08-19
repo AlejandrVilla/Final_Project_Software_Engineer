@@ -42,17 +42,21 @@ class User:
 
 users = []
 
+# extrae datos usuario
 list_log = modelLogin.get_all_usuario()
+# extrae todos los usuarios
 list_user = modelUser.get_all_usuarios()
 
-n = 1
+
+id_usuario = 1
+# guarda usuarios
 for x, y in zip(list_log,list_user):
     users.append(User(
-        id=n, contrasenia=x.get('contrasenia'),corre=x.get('correo'),
+        id=id_usuario, contrasenia=x.get('contrasenia'),corre=x.get('correo'),
         nombre=x.get('nombre'), apellido=x.get('apellido'),
         nombres=y.get('nombres'), apellidos=y.get('apellidos'),
         correo=y.get('correo'), lista=y.get('listaEventos'),))
-    n += 1
+    id_usuario += 1
 
 
 @app.before_request
