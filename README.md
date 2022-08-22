@@ -248,7 +248,8 @@ A class should have a single responsibility.
 ![Diagrama de casos de uso](./evidencias/S_SOLID.png)
 
 ## Open Closed
-Classes should be open for extension, but closed for modification
+Classes should be open for extension, but closed for modification.
+If you want the Class to perform more functions, the ideal approach is to add to the functions that already exist NOT change them.
 ```
 # modulo evento_
 class Evento_:
