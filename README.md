@@ -244,7 +244,7 @@ Se usa mayúsculas en las palabras reservadas al hacer uso de sentencias SQL, co
 
 ## Single Responsability
 A class should have a single responsibility
-[Diagrama de casos de uso](./evidencias/S_SOLID.png)
+![Diagrama de casos de uso](./evidencias/S_SOLID.png)
 
 ## Open Closed
 Classes should be open for extension, but closed for modification
