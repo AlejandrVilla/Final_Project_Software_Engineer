@@ -243,15 +243,95 @@ Se usa mayúsculas en las palabras reservadas al hacer uso de sentencias SQL, co
 # Práctica 11: princios SOLID
 
 ## Single Responsability
-A class should have a single responsibility
-![Diagrama de casos de uso](./evidencias/S_SOLID.png)
+A class should have a single responsibility.
+
+[Diagrama de casos de uso](./evidencias/S_SOLID.png)
 
 ## Open Closed
 Classes should be open for extension, but closed for modification
 ```
+# modulo evento_
+class Evento_:
+    def __init__(evento_, detalles_, link_, 
+                id_, nombre_, fecha_, 
+                hora_inicio_, hora_fin_):
+        evento_.detalles = detalles_
+        evento_.link = link_
+        evento_.id = id_
+        evento_.nombre = nombre_
+        evento_.fecha = fecha_
+        evento_.hora_inicio = hora_inicio_
+        evento_.hora_fin = hora_fin_
+    
+    def get_detalles(evento_):
+        return evento_.detalles
+    def setDetalles(evento_, detalles_):
+        evento_.detalles = detalles_
+
+    def get_link(evento_):
+        return evento_.link
+    def set_link(evento_, link_):
+        if not "www" in link_:
+            raise("Expected a www in ", link_)
+        evento_.link = link_
 ```
 ## Interface segregation
 Clients should not be forced to depend on methods that they do not use.
+A Class should perform only actions that are needed to fulfil its role. Any other action should be removed completely or moved somewhere else if it might be used by another Class in the future.
+```
+class LoginModel:
+    def __init__(self): 
+        self.mysql_pool = MySQLPool()
 
+    def get_usuario(self, id_): #retorna el usuario dependiendo del ID que se pasa a traves de json    
+        params = {'id' : id_}      
+        rv = self.mysql_pool.execute("SELECT * FROM login WHERE id=%(id_)s", params)                
+        data = []
+        content = {}
+        for result in rv:
+            content = {
+                'id': result[0], 
+                'contrasenia': result[1]
+                }
+            data.append(content)
+            content = {}
+        return data
+
+    def get_all_usuario(self): #retorna todos los usuarios que existen en la tabla "login"
+        rv = self.mysql_pool.execute("SELECT * FROM login ORDER BY id")  
+        data = []
+        content = {}
+        for result in rv:
+            content = {
+                'id': result[0], 
+                'contrasenia': result[1]
+                }
+            data.append(content)
+            content = {}
+        return data
+
+    def create_usuario(self, id_, contrasenia_):       
+        params = {
+            'id' : id_,
+            'contrasenia' : contrasenia_
+            }  
+        query = """INSERT INTO login(id, contrasenia) 
+                    VALUES (%(id_)s, %(contrasenia_)s)"""    
+        cursor = self.mysql_pool.execute(query, params, commit=True)   
+
+        data = {
+            'id': id_, 
+            'contrasenia': contrasenia_
+            }
+        return data
+
+    def delete_usuario(self, id_):     
+        params = {'id' : id_}      
+        query = """DELETE FROM login WHERE id = %(id_)s"""    
+        self.mysql_pool.execute(query, params, commit=True)   
+
+        data = {'result': 1}
+        return data
+```
 
 
