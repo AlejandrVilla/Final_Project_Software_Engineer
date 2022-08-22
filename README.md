@@ -239,3 +239,19 @@ Se usa mayúsculas en las palabras reservadas al hacer uso de sentencias SQL, co
             content = {}
         return data
 ```
+
+# Práctica 11: princios SOLID
+
+## Single Responsability
+A class should have a single responsibility
+[Diagrama de casos de uso](./evidencias/S_SOLID.png)
+
+## Open Closed
+Classes should be open for extension, but closed for modification
+```
+```
+## Interface segregation
+Clients should not be forced to depend on methods that they do not use.
+
+
+
